@@ -24,14 +24,15 @@ public class    Menu {
         System.out.println("5. View Projects list");
         System.out.println("6. View Tasks list");
 
-        System.out.println("7. Logout");
+        System.out.println("7. Get Report");
+        System.out.println("8. Logout");
 
         while (true) {
 
 //            Menu.showAdminMenu();
 
             int choice = sc.nextInt(); //validate
-            while ((choice < 1) || (choice > 7)) {
+            while ((choice < 1) || (choice > 8)) {
                 System.out.println("Invalid choice, please try again: ");
             }
 
@@ -69,7 +70,12 @@ public class    Menu {
                     TaskManager.viewTasks();
                     break;
 
+
                 case 7:
+                    ReportManager.showStatistics();
+                    break;
+
+                case 8:
                     return;
 
                 default:
@@ -155,14 +161,15 @@ public class    Menu {
 
         System.out.println("1. View My Tasks");
         System.out.println("2. Update Task Status");
+        System.out.println("3. View Task in Priority ");
 
-        System.out.println("3. Logout");
+        System.out.println("4. Logout");
 
         while(true) {
 
             System.out.println("Enter Choice: ");
             int choice = sc.nextInt(); //validate
-            while ((choice < 1) || (choice > 3)) {
+            while ((choice < 1) || (choice > 4)) {
                 System.out.println("Invalid choice, please try again: ");
             }
 
@@ -177,6 +184,10 @@ public class    Menu {
                     break;
 
                 case 3:
+                    TaskManager.loadTasksIntoQueue();
+                    break;
+
+                case 4:
                     System.out.println("\nLogged Out!");
                     return;
 

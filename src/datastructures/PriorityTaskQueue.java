@@ -24,9 +24,13 @@ public class PriorityTaskQueue {
         };
     }
 
+    public void addTask(Task task) {
+        queue.add(task);
+    }
 
     public void displayTasksByPriority() {
 
+        System.out.println("\n===== MY TASKS (BY PRIORITY) =====\n");
         for (Task task : queue) {
 
             System.out.println(task);

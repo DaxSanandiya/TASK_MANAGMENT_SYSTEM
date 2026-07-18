@@ -46,4 +46,23 @@ public class Task {
     public String getPriority() {
         return priority;
     }
+    public int getTaskId() {
+        return taskId;
+    }
+
+    public int getAssignedUserId() {
+        return assignedUserId;
+    }
+
+    public String getTaskTitle() {
+        return taskTitle;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public String getDeadline() {
+        return deadline;
+    }
 }

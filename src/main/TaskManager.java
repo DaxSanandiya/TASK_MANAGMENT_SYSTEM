@@ -1,6 +1,7 @@
 package main;
 
 import database.DatabaseConnection;
+import datastructures.PriorityTaskQueue;
 import model.Task;
 
 import java.sql.Connection;
@@ -9,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import static login.LoginManager.UserId;
 
 public class TaskManager {
 
@@ -185,4 +188,33 @@ public class TaskManager {
             System.out.println("Task Not Found!");
         }
     }
+
+
+    public static PriorityTaskQueue priorityQueue = new PriorityTaskQueue();
+
+        public static void loadTasksIntoQueue() throws Exception {
+
+            Connection con = DatabaseConnection.getConnection();
+            String query = "SELECT * FROM tasks where assigned_user_id =?";
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1,UserId);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                Task task = new Task(
+                        rs.getInt("task_id"),
+                        rs.getInt("project_id"),
+                        rs.getInt("assigned_user_id"),
+                        rs.getString("task_title"),
+                        rs.getString("description"),
+                        rs.getString("priority"),
+                        rs.getString("status"),
+                        rs.getString("deadline")
+                );
+
+                priorityQueue.addTask(task);
+            }
+            priorityQueue.displayTasksByPriority();
+        }
 }
