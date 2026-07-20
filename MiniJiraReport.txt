@@ -1,153 +1,163 @@
+==============================================
+         🤖   MINI JIRA REPORT
+==============================================
+
+👥 Total Users      : 13
+📂 Total Projects   : 5
+📃 Total Tasks      : 12
+✅ Completed Tasks  : 4
+❗Pending Tasks    : 8
+
 ====================================
-         MINI JIRA REPORT
+ 📊 PROJECT DETAILS
 ====================================
 
-Total Users      : 12
-Total Projects   : 5
-Total Tasks      : 12
-Completed Tasks  : 4
-Pending Tasks    : 8
 
-====================================
-PROJECT DETAILS
-====================================
+🆔 Project ID       : 1
+🏷️ Project Name    : E-Sprots System
+⭕ Status          : In Progress
+🎯 Total Tasks     : 5
+✅ Completed Tasks : 1
+❗ Pending Tasks   : 4
 
-Project ID    : 1
-Project Name  : E-Sprots System
-Status        : In Progress
-Total Tasks : 5
-Completed Tasks : 1
-Pending Tasks : 4
 
 Tasks:
 --------------------------------
-Task ID      : 1
-Task Name    : Design Login UI
-Priority     : High
-Status       : Completed
-Assigned To  : 4
-Deadline     : 2026-07-15
+🆔 Task ID       : 1
+🏷️ Task Name    : Design Login UI
+📌 Priority     : High
+🟢 Status       : Completed
+🤵 Assigned To  : 4
+⌛ Deadline     : 2026-07-15
 --------------------------------
-Task ID      : 2
-Task Name    : Create User Table
-Priority     : High
-Status       : complated
-Assigned To  : 5
-Deadline     : 2026-07-14
+🆔 Task ID       : 2
+🏷️ Task Name    : Create User Table
+📌 Priority     : High
+🟢 Status       : complated
+🤵 Assigned To  : 5
+⌛ Deadline     : 2026-07-14
 --------------------------------
-Task ID      : 3
-Task Name    : Implement JDBC Connection
-Priority     : High
-Status       : In Progress
-Assigned To  : 6
-Deadline     : 2026-07-16
+🆔 Task ID       : 3
+🏷️ Task Name    : Implement JDBC Connection
+📌 Priority     : High
+🟢 Status       : In Progress
+🤵 Assigned To  : 6
+⌛ Deadline     : 2026-07-16
 --------------------------------
-Task ID      : 4
-Task Name    : Build Dashboard
-Priority     : Medium
-Status       : Pending
-Assigned To  : 7
-Deadline     : 2026-07-18
+🆔 Task ID       : 4
+🏷️ Task Name    : Build Dashboard
+📌 Priority     : Medium
+🟢 Status       : Pending
+🤵 Assigned To  : 7
+⌛ Deadline     : 2026-07-18
 --------------------------------
-Task ID      : 5
-Task Name    : Task Assignment Module
-Priority     : High
-Status       : In Progress
-Assigned To  : 8
-Deadline     : 2026-07-19
+🆔 Task ID       : 5
+🏷️ Task Name    : Task Assignment Module
+📌 Priority     : High
+🟢 Status       : In Progress
+🤵 Assigned To  : 8
+⌛ Deadline     : 2026-07-19
 
-====================================
+==================================================
 
-Project ID    : 2
-Project Name  : Inventory Management System
-Status        : In Progress
-Total Tasks : 3
-Completed Tasks : 1
-Pending Tasks : 2
+
+🆔 Project ID       : 2
+🏷️ Project Name    : Inventory Management System
+⭕ Status          : In Progress
+🎯 Total Tasks     : 3
+✅ Completed Tasks : 1
+❗ Pending Tasks   : 2
+
 
 Tasks:
 --------------------------------
-Task ID      : 6
-Task Name    : Inventory Table Design
-Priority     : Medium
-Status       : Completed
-Assigned To  : 9
-Deadline     : 2026-07-20
+🆔 Task ID       : 6
+🏷️ Task Name    : Inventory Table Design
+📌 Priority     : Medium
+🟢 Status       : Completed
+🤵 Assigned To  : 9
+⌛ Deadline     : 2026-07-20
 --------------------------------
-Task ID      : 7
-Task Name    : Product CRUD
-Priority     : High
-Status       : Pending
-Assigned To  : 10
-Deadline     : 2026-07-21
+🆔 Task ID       : 7
+🏷️ Task Name    : Product CRUD
+📌 Priority     : High
+🟢 Status       : Pending
+🤵 Assigned To  : 10
+⌛ Deadline     : 2026-07-21
 --------------------------------
-Task ID      : 8
-Task Name    : Supplier Module
-Priority     : Low
-Status       : Pending
-Assigned To  : 11
-Deadline     : 2026-07-22
+🆔 Task ID       : 8
+🏷️ Task Name    : Supplier Module
+📌 Priority     : Low
+🟢 Status       : Pending
+🤵 Assigned To  : 11
+⌛ Deadline     : 2026-07-22
 
-====================================
+==================================================
 
-Project ID    : 3
-Project Name  : Hospital Management System
-Status        : Planning
-Total Tasks : 2
-Completed Tasks : 0
-Pending Tasks : 2
+
+🆔 Project ID       : 3
+🏷️ Project Name    : Hospital Management System
+⭕ Status          : Planning
+🎯 Total Tasks     : 2
+✅ Completed Tasks : 0
+❗ Pending Tasks   : 2
+
 
 Tasks:
 --------------------------------
-Task ID      : 9
-Task Name    : Patient Records
-Priority     : High
-Status       : In Progress
-Assigned To  : 12
-Deadline     : 2026-07-23
+🆔 Task ID       : 9
+🏷️ Task Name    : Patient Records
+📌 Priority     : High
+🟢 Status       : In Progress
+🤵 Assigned To  : 12
+⌛ Deadline     : 2026-07-23
 --------------------------------
-Task ID      : 10
-Task Name    : Doctor Management
-Priority     : Medium
-Status       : Pending
-Assigned To  : 4
-Deadline     : 2026-07-24
+🆔 Task ID       : 10
+🏷️ Task Name    : Doctor Management
+📌 Priority     : Medium
+🟢 Status       : Pending
+🤵 Assigned To  : 4
+⌛ Deadline     : 2026-07-24
 
-====================================
+==================================================
 
-Project ID    : 4
-Project Name  : Event Planner
-Status        : Completed
-Total Tasks : 2
-Completed Tasks : 2
-Pending Tasks : 0
+
+🆔 Project ID       : 4
+🏷️ Project Name    : Event Planner
+⭕ Status          : Completed
+🎯 Total Tasks     : 2
+✅ Completed Tasks : 2
+❗ Pending Tasks   : 0
+
 
 Tasks:
 --------------------------------
-Task ID      : 11
-Task Name    : Venue Booking
-Priority     : Medium
-Status       : Completed
-Assigned To  : 5
-Deadline     : 2026-07-25
+🆔 Task ID       : 11
+🏷️ Task Name    : Venue Booking
+📌 Priority     : Medium
+🟢 Status       : Completed
+🤵 Assigned To  : 5
+⌛ Deadline     : 2026-07-25
 --------------------------------
-Task ID      : 12
-Task Name    : Event Schedule
-Priority     : Low
-Status       : Completed
-Assigned To  : 6
-Deadline     : 2026-07-26
+🆔 Task ID       : 12
+🏷️ Task Name    : Event Schedule
+📌 Priority     : Low
+🟢 Status       : Completed
+🤵 Assigned To  : 6
+⌛ Deadline     : 2026-07-26
 
-====================================
+==================================================
 
-Project ID    : 5
-Project Name  : College Portal
-Status        : In Progress
-Total Tasks : 0
-Completed Tasks : 0
-Pending Tasks : 0
+
+🆔 Project ID       : 5
+🏷️ Project Name    : College Portal
+⭕ Status          : In Progress
+🎯 Total Tasks     : 0
+✅ Completed Tasks : 0
+❗ Pending Tasks   : 0
+
 
 Tasks:
 
-====================================
+==================================================
 
