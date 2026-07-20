@@ -16,10 +16,10 @@ public class DatabaseConnection {
 
         if(con!=null)
         {
-            System.out.println("Database Connected Successfully!");
+            System.out.println("Database Connected Successfully ✅ !");
         }
         else {
-            System.out.println("Connection Failed!");
+            System.out.println("Connection Failed ❌ !");
         }
 
         return con;

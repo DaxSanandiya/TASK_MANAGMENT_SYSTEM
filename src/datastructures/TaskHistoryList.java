@@ -1,22 +1,42 @@
 package datastructures;
 
-import java.util.LinkedList;
-import model.Task;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import database.DatabaseConnection;
 
 public class TaskHistoryList {
 
-    LinkedList<Task> history = new LinkedList<>();
+    public static void showHistory() throws Exception {
 
-    public void addCompletedTask(Task task) {
+        Connection con = DatabaseConnection.getConnection();
+        String query = "SELECT * FROM activity_log ORDER BY action_time DESC";
+        PreparedStatement ps = con.prepareStatement(query);
 
-        history.add(task);
-    }
+        ResultSet rs = ps.executeQuery();
 
-    public void showHistory() {
+        System.out.println("\n==============================");
+        System.out.println("📜 ACTIVITY HISTORY");
+        System.out.println("==============================");
 
-        for(Task task : history) {
+        boolean found = false;
 
-            System.out.println(task);
+        while(rs.next()) {
+
+            found = true;
+
+            System.out.println("🕒 " + rs.getTimestamp("action_time"));
+            System.out.println("👤 User ID : " + rs.getInt("user_id"));
+            System.out.println("⚡ " + rs.getString("action"));
+            System.out.println("-------------------------------------");
         }
+
+        if(!found) {
+
+            System.out.println("📭 No History Found");
+        }
+
+        con.close();
     }
 }

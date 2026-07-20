@@ -172,5 +172,6 @@ public class ReportManager {
         bw.close();
 
         System.out.println("\nReport Generated Successfully!");
+        ActivityLogger.log("Generated Report");
     }
 }

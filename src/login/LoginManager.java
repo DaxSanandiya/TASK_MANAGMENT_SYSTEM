@@ -4,6 +4,7 @@ import java.sql.*;
 import java.util.Scanner;
 
 import database.DatabaseConnection;
+import main.ActivityLogger;
 
 public class LoginManager {
 
@@ -14,10 +15,10 @@ public class LoginManager {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("\n===== TASK MANAGMENT SYSTEM LOGIN =====");
-        System.out.print("Email: ");
+        System.out.println("\n===== 🌐 TASK MANAGMENT SYSTEM LOGIN =====");
+        System.out.print(" ✉️ Email: ");
         String email = sc.nextLine();
-        System.out.print("Password: ");
+        System.out.print(" 🔑 Password: ");
         String password = sc.nextLine();
 
 
@@ -35,13 +36,14 @@ public class LoginManager {
             RoleId = rs.getInt("role_id");
             UserId = rs.getInt("user_id");
 
-            System.out.println("\nLogin Successful!");
+            System.out.println("\nLogin Successful 🙌 !");
+            ActivityLogger.log("Logged In ");
 
             return RoleId;
         }
         else
         {
-            System.out.println("\nInvalid Email or Password");
+            System.out.println("\nInvalid Email or Password 🤦 ");
             return -1;
         }
     }

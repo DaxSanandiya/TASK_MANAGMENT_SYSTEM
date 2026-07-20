@@ -8,7 +8,6 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         DatabaseConnection.getConnection();
-        boolean b =true;
 
         while (true) {
             if (!(LoginManager.login() == -1)) {
@@ -20,7 +19,7 @@ public class Main {
                         break;
                     }
 
-                    System.out.print("Role ID must be 1, 2 or 3: ");
+                    System.out.print("🦖 Role ID must be 1, 2 or 3: ");
                     break;
                 }
 
@@ -41,7 +40,7 @@ public class Main {
                             break;
 
                         default:
-                            System.out.println("Login Failed");
+                            System.out.println("🦖 Login Failed");
                     }
 
                 return;

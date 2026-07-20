@@ -110,9 +110,7 @@ public class TaskManager {
 
         Connection con = DatabaseConnection.getConnection();
 
-        String query =
-                "INSERT INTO tasks " +
-                        "(project_id, assigned_user_id, task_title, description, priority, status, deadline) " +
+        String query = "INSERT INTO tasks " + "(project_id, assigned_user_id, task_title, description, priority, status, deadline) " +
                         "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         PreparedStatement ps = con.prepareStatement(query);
@@ -130,6 +128,7 @@ public class TaskManager {
         if(rows > 0) {
 
             System.out.println("\nTask Created Successfully!");
+            ActivityLogger.log("Created Task : " + title);
         }else {
             System.out.println("\nTask Creation Failed!");
         }
@@ -158,6 +157,7 @@ public class TaskManager {
         if(rows > 0) {
 
             System.out.println("Status Updated Successfully!");
+            ActivityLogger.log("Updated Task ID : " + taskId);
         }
         else {
             System.out.println("Status Updated Failed!");
@@ -182,6 +182,7 @@ public class TaskManager {
         if(rows > 0) {
 
             System.out.println("Task Deleted Successfully!");
+            ActivityLogger.log("Deleted Task ID : " + taskId);
         }
         else {
 
@@ -217,4 +218,26 @@ public class TaskManager {
             }
             priorityQueue.displayTasksByPriority();
         }
+
+    public static void getNextTask() {
+
+        Task task = priorityQueue.getNextTask();
+
+        if(task == null) {
+
+            System.out.println("\n❌ No Tasks Available");
+            return;
+        }
+
+
+        System.out.println("======== 🎯 NEXT TASK ========");
+
+        System.out.println("🆔 ID       : " + task.getTaskId());
+        System.out.println("📋 Title    : " + task.getTaskTitle());
+
+        System.out.println("🔥 Priority : " + task.getPriority());
+        System.out.println("📍 Status   : " + task.getStatus());
+
+        System.out.println("📅 Deadline : " + task.getDeadline());
+    }
 }

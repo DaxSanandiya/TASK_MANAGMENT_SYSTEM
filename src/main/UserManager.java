@@ -121,6 +121,7 @@ public class UserManager {
         if(rows > 0) {
 
             System.out.println("\nUser Created Successfully!");
+            ActivityLogger.log("Created User : " + fullName);
         }
         else {
 
@@ -144,9 +145,7 @@ public class UserManager {
 
         Connection con = DatabaseConnection.getConnection();
 
-        String query = "UPDATE users " +
-                "SET full_name=?, email=?, team_id=? " +
-                "WHERE user_id=?";
+        String query = "UPDATE users SET full_name=?, email=?, team_id=? WHERE user_id=?";
 
         PreparedStatement ps = con.prepareStatement(query);
 
@@ -160,6 +159,8 @@ public class UserManager {
         if(rows > 0) {
 
             System.out.println("\nUser Updated Successfully!");
+            ActivityLogger.log(
+                    "Updated User ID : " + userId);
         }
         else {
 
@@ -186,6 +187,7 @@ public class UserManager {
         if(rows > 0) {
 
             System.out.println("\nUser Deleted Successfully!");
+            ActivityLogger.log("Deleted User ID : " + userId);
         }
         else {
 

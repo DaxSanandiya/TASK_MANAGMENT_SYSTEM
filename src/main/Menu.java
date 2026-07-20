@@ -1,5 +1,7 @@
 package main;
 
+import datastructures.TaskHistoryList;
+
 import java.util.Scanner;
 
 
@@ -14,40 +16,42 @@ public class    Menu {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("\n===== ADMIN MENU =====");
+        System.out.println("\n======== 👑 ADMIN MENU ========");
 
-        System.out.println("1. View Users");
-        System.out.println("2. Create User");
-        System.out.println("3. Update User");
-        System.out.println("4. Delete User");
+        System.out.println("1. 👁️👁️ View Users");
+        System.out.println("2. 👤 Create User");
+        System.out.println("3. ✏️ Update User");
+        System.out.println("4. ❌ Delete User");
 
-        System.out.println("5. View Projects list");
-        System.out.println("6. View Tasks list");
+        System.out.println("5. 👀 View Projects list");
+        System.out.println("6. 📃 View Tasks list");
 
-        System.out.println("7. Get Report");
-        System.out.println("8. Logout");
+        System.out.println("7. 📋 Get Report");
+        System.out.println("8. 📜 View Activity History");
+
+        System.out.println("9. 🚪🏃‍  ️Logout");
 
         while (true) {
 
 //            Menu.showAdminMenu();
 
             int choice = sc.nextInt(); //validate
-            while ((choice < 1) || (choice > 8)) {
-                System.out.println("Invalid choice, please try again: ");
+            while ((choice < 1) || (choice > 9)) {
+                System.out.println("Invalid choice 🤦, please try again 🥹 : ");
             }
 
             switch (choice) {
 
                 case 1:
-                    System.out.println("1. View All Users");
-                    System.out.println("2. View Managers ");
-                    System.out.println("3. View Team Members ");
+                    System.out.println("1.👀 View All Users");
+                    System.out.println("2.👀 View Managers ");
+                    System.out.println("3.👀 View Team Members ");
                     System.out.println("Enter choice: ");
                     int c = sc.nextInt();
                     if (c == 1) {UserManager.viewALLUsers();}
                     else if (c == 2) {UserManager.viewManagers();}
                     else if (c == 3) {UserManager.viewTeamMembers();}
-                    else {System.out.println("Invalid choice, please try again: ");}
+                    else {System.out.println("Invalid choice 🤦, please try again 🥹 : ");}
                     break;
 
                 case 2:
@@ -76,6 +80,12 @@ public class    Menu {
                     break;
 
                 case 8:
+                    TaskHistoryList.showHistory();
+                    break;
+
+                case 9:
+                    System.out.println("\n🚪🏃‍♂️ Logged Out!");
+                    ActivityLogger.log("Logged Out ");
                     return;
 
                 default:
@@ -87,27 +97,30 @@ public class    Menu {
     public static void showManagerMenu() throws Exception {
 
         Scanner sc = new Scanner(System.in);
-        System.out.println("\n===== PROJECT MANAGER MENU =====");
 
-        System.out.println("1. View Projects");
-        System.out.println("2. Create Project");
-        System.out.println("3. Delete Project");
 
-        System.out.println("4. View Tasks");
-        System.out.println("5. Create Task");
-        System.out.println("6. Update Task Status");
-        System.out.println("7. Delete Task");
+        System.out.println("\n====== 🧑‍💼 PROJECT MANAGER MENU ======");
 
-        System.out.println("8. Get Report");
+        System.out.println("1. 👀 View Projects");
+        System.out.println("2. 📁 Create Project");
+        System.out.println("3. ❌ Delete Project");
 
-        System.out.println("9. Logout");
+        System.out.println("4. 👀 View Tasks");
+        System.out.println("5. 📋 Create Task");
+        System.out.println("6. ✏️ Update Task Status");
+        System.out.println("7. ❌ Delete Task");
+
+        System.out.println("8. 📊 Generate Report");
+        System.out.println("9. 📜 View Activity History");
+
+        System.out.println("10. 🚪🏃‍♂️ Logout");
 
         while(true) {
 
             System.out.println("Enter Choice: ");
             int choice = sc.nextInt();
-            while ((choice < 1) || (choice > 9)) {
-                System.out.println("Invalid choice, please try again: ");
+            while ((choice < 1) || (choice > 10)) {
+                System.out.println("Invalid choice 🤦, please try again 🥹 : ");
             }
 
             switch(choice) {
@@ -143,11 +156,16 @@ public class    Menu {
                     break;
 
                 case 9:
-                    System.out.println("\nLogged Out!");
+                    TaskHistoryList.showHistory();
+                    break;
+
+                case 10:
+                    System.out.println("\n🚪🏃‍♂️ Logged Out!");
+                    ActivityLogger.log("Logged Out ");
                     return;
 
                 default:
-                    System.out.println("\nInvalid Choice!");
+                    System.out.println("\nInvalid Choice 🤦 !");
                     return;
             }
         }
@@ -157,19 +175,22 @@ public class    Menu {
     public static void showMemberMenu() throws Exception {
 
         Scanner sc = new Scanner(System.in);
-        System.out.println("\n===== TEAM MEMBER MENU =====");
+        System.out.println("\n====== 👨‍💻 TEAM MEMBER MENU ======");
 
-        System.out.println("1. View My Tasks");
-        System.out.println("2. Update Task Status");
-        System.out.println("3. View Task in Priority ");
+        System.out.println("1. 📋 View My Tasks");
+        System.out.println("2. ✏️ Update Task Status");
 
-        System.out.println("4. Logout");
+        System.out.println("3. 🔥 View Tasks By Priority");
+        System.out.println("4. ⏭️ Get Next Task");
+
+        System.out.println("5. 🚪 Logout");
+
 
         while(true) {
 
             System.out.println("Enter Choice: ");
             int choice = sc.nextInt(); //validate
-            while ((choice < 1) || (choice > 4)) {
+            while ((choice < 1) || (choice > 5)) {
                 System.out.println("Invalid choice, please try again: ");
             }
 
@@ -188,11 +209,15 @@ public class    Menu {
                     break;
 
                 case 4:
-                    System.out.println("\nLogged Out!");
+
+                    break;
+                case 5:
+                    System.out.println("\n🚪🏃‍♂️ Logged Out!");
+                    ActivityLogger.log("Logged Out ");
                     return;
 
                 default:
-                    System.out.println("\nInvalid Choice!");
+                    System.out.println("\nInvalid Choice 🤦 !");
             }
         }
     }

@@ -30,10 +30,21 @@ public class PriorityTaskQueue {
 
     public void displayTasksByPriority() {
 
-        System.out.println("\n===== MY TASKS (BY PRIORITY) =====\n");
+        System.out.println("\n===== 📌 MY TASKS (BY PRIORITY) =====\n");
         for (Task task : queue) {
 
             System.out.println(task);
         }
     }
+
+    public Task getNextTask() {
+
+        if(queue.isEmpty()) {
+
+            return null;
+        }
+
+        return queue.peek();
+    }
+
 }

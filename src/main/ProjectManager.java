@@ -66,9 +66,8 @@ public class ProjectManager {
 
         Connection con = DatabaseConnection.getConnection();
 
-        String query = "INSERT INTO projects " +
-                        "(project_name, description, start_date, end_date, status, created_by) " +
-                        "VALUES (?, ?, CURDATE(), ?, ?, ?)";
+        String query = "INSERT INTO projects (project_name, description, start_date, end_date, status, created_by) " +
+                "VALUES (?, ?, CURDATE(), ?, ?, ?)";
 
         PreparedStatement ps = con.prepareStatement(query);
 
@@ -83,6 +82,7 @@ public class ProjectManager {
         if(rows > 0) {
 
             System.out.println("\nProject Created Successfully!");
+            ActivityLogger.log("Created Project : " + projectName);
 
         } else {
 
@@ -107,6 +107,7 @@ public class ProjectManager {
         if(rows > 0) {
 
             System.out.println("\nProject Deleted Successfully!");
+            ActivityLogger.log("Deleted Project ID : " + projectId);
 
         } else {
 
