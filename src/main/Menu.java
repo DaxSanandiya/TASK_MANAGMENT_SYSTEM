@@ -16,24 +16,22 @@ public class    Menu {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("\n======== 👑 ADMIN MENU ========");
-
-        System.out.println("1. 👁️👁️ View Users");
-        System.out.println("2. 👤 Create User");
-        System.out.println("3. ✏️ Update User");
-        System.out.println("4. ❌ Delete User");
-
-        System.out.println("5. 👀 View Projects list");
-        System.out.println("6. 📃 View Tasks list");
-
-        System.out.println("7. 📋 Get Report");
-        System.out.println("8. 📜 View Activity History");
-
-        System.out.println("9. 🚪🏃‍  ️Logout");
-
         while (true) {
 
-//            Menu.showAdminMenu();
+            System.out.println("\n======== 👑 ADMIN MENU ========");
+
+            System.out.println("1. 👁️👁️ View Users");
+            System.out.println("2. 👤 Create User");
+            System.out.println("3. ✏️ Update User");
+            System.out.println("4. ❌ Delete User");
+
+            System.out.println("5. 👀 View Projects list");
+            System.out.println("6. 📃 View Tasks list");
+
+            System.out.println("7. 📋 Get Report");
+            System.out.println("8. 📜 View Activity History");
+
+            System.out.println("9. 🚪🏃‍  ️Logout");
 
             int choice = sc.nextInt(); //validate
             while ((choice < 1) || (choice > 9)) {
@@ -99,23 +97,23 @@ public class    Menu {
         Scanner sc = new Scanner(System.in);
 
 
-        System.out.println("\n====== 🧑‍💼 PROJECT MANAGER MENU ======");
-
-        System.out.println("1. 👀 View Projects");
-        System.out.println("2. 📁 Create Project");
-        System.out.println("3. ❌ Delete Project");
-
-        System.out.println("4. 👀 View Tasks");
-        System.out.println("5. 📋 Create Task");
-        System.out.println("6. ✏️ Update Task Status");
-        System.out.println("7. ❌ Delete Task");
-
-        System.out.println("8. 📊 Generate Report");
-        System.out.println("9. 📜 View Activity History");
-
-        System.out.println("10. 🚪🏃‍♂️ Logout");
-
         while(true) {
+
+            System.out.println("\n====== 🧑‍💼 PROJECT MANAGER MENU ======");
+
+            System.out.println("1. 👀 View Projects");
+            System.out.println("2. 📁 Create Project");
+            System.out.println("3. ❌ Delete Project");
+
+            System.out.println("4. 👀 View Tasks");
+            System.out.println("5. 📋 Create Task");
+            System.out.println("6. ✏️ Update Task Status");
+            System.out.println("7. ❌ Delete Task");
+
+            System.out.println("8. 📊 Generate Report");
+            System.out.println("9. 📜 View Activity History");
+
+            System.out.println("10. 🚪🏃‍♂️ Logout");
 
             System.out.println("Enter Choice: ");
             int choice = sc.nextInt();
@@ -175,18 +173,20 @@ public class    Menu {
     public static void showMemberMenu() throws Exception {
 
         Scanner sc = new Scanner(System.in);
-        System.out.println("\n====== 👨‍💻 TEAM MEMBER MENU ======");
 
-        System.out.println("1. 📋 View My Tasks");
-        System.out.println("2. ✏️ Update Task Status");
-
-        System.out.println("3. 🔥 View Tasks By Priority");
-        System.out.println("4. ⏭️ Get Next Task");
-
-        System.out.println("5. 🚪 Logout");
 
 
         while(true) {
+
+            System.out.println("\n====== 👨‍💻 TEAM MEMBER MENU ======");
+
+            System.out.println("1. 📋 View My Tasks");
+            System.out.println("2. ✏️ Update Task Status");
+
+            System.out.println("3. 🔥 View Tasks By Priority");
+            System.out.println("4. ⏭️ Get Next Task");
+
+            System.out.println("5. 🚪 Logout");
 
             System.out.println("Enter Choice: ");
             int choice = sc.nextInt(); //validate

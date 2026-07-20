@@ -40,8 +40,7 @@ public class ProjectManager {
                 projects.add(project);
             }
 
-            System.out.println(
-                    "\n===== PROJECTS =====\n");
+            System.out.println("\n=======  📂 PROJECTS  =======\n");
 
             for(Project project : projects) {
 

@@ -41,7 +41,7 @@ public class TaskManager {
             tasks.add(task);
         }
 
-        System.out.println("\n===== TASKS =====\n");
+        System.out.println("\n=======  📃 TASKS  =======\n");
 
         for(Task task : tasks) {
 
@@ -101,8 +101,7 @@ public class TaskManager {
                 break;
             }
 
-            System.out.print(
-                    "Enter Pending, In Progress or Completed: ");
+            System.out.print("Enter Pending, In Progress or Completed: ");
         }
 
         System.out.print("Deadline (YYYY-MM-DD): ");
