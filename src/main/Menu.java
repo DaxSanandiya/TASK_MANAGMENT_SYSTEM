@@ -33,10 +33,24 @@ public class    Menu {
 
             System.out.println("9. 🚪🏃‍  ️Logout");
 
-            int choice = sc.nextInt(); //validate
-            while ((choice < 1) || (choice > 9)) {
-                System.out.println("Invalid choice 🤦, please try again 🥹 : ");
+            System.out.println("Enter Your Choice : ");
+            int choice ;
+
+            while (true) {
+
+                try {
+                    choice = sc.nextInt(); //validate
+                    if(choice >= 1 && choice <= 9) {
+                        break;
+                    }
+                    System.out.print("❌ Invalid choice! Enter 1-9: ");
+                }
+                catch (Exception e) {
+                    sc.nextLine();
+                    System.out.println("Invalid choice 🤦, please try again 🥹 : ");
+                }
             }
+
 
             switch (choice) {
 
@@ -45,11 +59,27 @@ public class    Menu {
                     System.out.println("2.👀 View Managers ");
                     System.out.println("3.👀 View Team Members ");
                     System.out.println("Enter choice: ");
-                    int c = sc.nextInt();
+
+                    int c;
+                    while (true) {
+
+                        try {
+                            c = sc.nextInt(); //validate
+                            if(c >= 1 && c <= 3) {
+                                break;
+                            }
+                            System.out.print("❌ Invalid choice! Enter 1-9: ");
+                        }
+                        catch (Exception e) {
+                            sc.nextLine();
+                            System.out.println("Invalid choice 🤦, please try again 🥹 : ");
+                        }
+                    }
+
+
                     if (c == 1) {UserManager.viewALLUsers();}
                     else if (c == 2) {UserManager.viewManagers();}
-                    else if (c == 3) {UserManager.viewTeamMembers();}
-                    else {System.out.println("Invalid choice 🤦, please try again 🥹 : ");}
+                    else {UserManager.viewTeamMembers();}
                     break;
 
                 case 2:
@@ -116,9 +146,21 @@ public class    Menu {
             System.out.println("10. 🚪🏃‍♂️ Logout");
 
             System.out.println("Enter Choice: ");
-            int choice = sc.nextInt();
-            while ((choice < 1) || (choice > 10)) {
-                System.out.println("Invalid choice 🤦, please try again 🥹 : ");
+
+            int choice;
+            while (true) {
+
+                try {
+                    choice = sc.nextInt(); //validate
+                    if(choice >= 1 && choice <= 10) {
+                        break;
+                    }
+                    System.out.print("❌ Invalid choice! Enter 1-9: ");
+                }
+                catch (Exception e) {
+                    sc.nextLine();
+                    System.out.println("Invalid choice 🤦, please try again 🥹 : ");
+                }
             }
 
             switch(choice) {
@@ -189,9 +231,21 @@ public class    Menu {
             System.out.println("5. 🚪 Logout");
 
             System.out.println("Enter Choice: ");
-            int choice = sc.nextInt(); //validate
-            while ((choice < 1) || (choice > 5)) {
-                System.out.println("Invalid choice, please try again: ");
+
+            int choice;
+            while (true) {
+
+                try {
+                    choice = sc.nextInt(); //validate
+                    if(choice >= 1 && choice <= 5) {
+                        break;
+                    }
+                    System.out.print("❌ Invalid choice! Enter 1-9: ");
+                }
+                catch (Exception e) {
+                    sc.nextLine();
+                    System.out.println("Invalid choice 🤦, please try again 🥹 : ");
+                }
             }
 
             switch(choice) {

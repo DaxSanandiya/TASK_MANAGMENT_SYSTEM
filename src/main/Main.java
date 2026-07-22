@@ -12,18 +12,6 @@ public class Main {
         while (true) {
             if (!(LoginManager.login() == -1)) {
 
-
-                while (true) {
-
-                    if (RoleId == 1 || RoleId == 2 || RoleId == 3) {
-                        break;
-                    }
-
-                    System.out.print("🦖 Role ID must be 1, 2 or 3: ");
-                    break;
-                }
-
-
                     switch (RoleId) {
 
                         case 1:
