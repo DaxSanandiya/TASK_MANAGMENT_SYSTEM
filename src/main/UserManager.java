@@ -31,7 +31,7 @@ public class UserManager {
             users.add(user);
         }
 
-        System.out.println("\n================ USERS ================");
+        System.out.println("\n================ 👥 USERS ================");
 
         for (User user : users) {
 
@@ -48,7 +48,7 @@ public class UserManager {
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery(query);
 
-        System.out.println("===== MANAGERS =====");
+        System.out.println("======== 👨‍💼 MANAGERS ========");
 
         while(rs.next()) {
 
@@ -65,7 +65,7 @@ public class UserManager {
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery(query);
 
-        System.out.println("===== TEAM MEMBERS =====");
+        System.out.println("======== 👨‍💻 TEAM MEMBERS ========");
 
         while(rs.next()) {
 
@@ -88,7 +88,7 @@ public class UserManager {
         while(password.length() < 4) {
 
             System.out.print(
-                    "Password Must Be 4+ Characters or Digits !!  "
+                    "Password Must Be 4+ Characters or Digits 🦖 !!  "
             );
 
             password = sc.nextLine();
@@ -120,12 +120,12 @@ public class UserManager {
 
         if(rows > 0) {
 
-            System.out.println("\nUser Created Successfully!");
+            System.out.println("\n✅ User Created Successfully!");
             ActivityLogger.log("Created User : " + fullName);
         }
         else {
 
-            System.out.println("\nUser Creation Failed!");
+            System.out.println("\n❌ User Creation Failed!");
         }
     }
 
@@ -158,13 +158,13 @@ public class UserManager {
 
         if(rows > 0) {
 
-            System.out.println("\nUser Updated Successfully!");
-            ActivityLogger.log(
-                    "Updated User ID : " + userId);
+            System.out.println("\n✅ User Updated Successfully !");
+
+            ActivityLogger.log("Updated User ID : " + userId);
         }
         else {
 
-            System.out.println("\nUser Not Found!");
+            System.out.println("\n❌ User Not Found !");
         }
     }
 
@@ -186,12 +186,12 @@ public class UserManager {
 
         if(rows > 0) {
 
-            System.out.println("\nUser Deleted Successfully!");
+            System.out.println("\n✅ User Deleted Successfully!");
             ActivityLogger.log("Deleted User ID : " + userId);
         }
         else {
 
-            System.out.println("\nUser Not Found!");
+            System.out.println("\n❌ User Not Found!");
         }
     }
 }

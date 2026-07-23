@@ -101,11 +101,24 @@ public class TaskManager {
                 break;
             }
 
-            System.out.print("Enter Pending, In Progress or Completed: ");
+            System.out.print("👾 Enter Pending, In Progress or Completed: ");
         }
 
         System.out.print("Deadline (YYYY-MM-DD): ");
-        String deadline = sc.nextLine();
+
+        String deadline ;
+        while(true) {
+            try {
+
+                deadline = sc.nextLine();
+                break;
+            }
+            catch (Exception e) {
+                sc.nextLine();
+                System.out.print("❌ Invalid Format ! Right Format is 👉 YYYY-MM-DD: ");
+            }
+        }
+
 
         Connection con = DatabaseConnection.getConnection();
 
@@ -126,10 +139,10 @@ public class TaskManager {
 
         if(rows > 0) {
 
-            System.out.println("\nTask Created Successfully!");
+            System.out.println("\n✅ Task Created Successfully!");
             ActivityLogger.log("Created Task : " + title);
         }else {
-            System.out.println("\nTask Creation Failed!");
+            System.out.println("\n❌ Task Creation Failed!");
         }
     }
 
@@ -155,11 +168,11 @@ public class TaskManager {
 
         if(rows > 0) {
 
-            System.out.println("Status Updated Successfully!");
+            System.out.println("✅ Status Updated Successfully!");
             ActivityLogger.log("Updated Task ID : " + taskId);
         }
         else {
-            System.out.println("Status Updated Failed!");
+            System.out.println("❌ Status Updated Failed!");
         }
     }
 
@@ -180,12 +193,12 @@ public class TaskManager {
 
         if(rows > 0) {
 
-            System.out.println("Task Deleted Successfully!");
+            System.out.println("✅ Task Deleted Successfully!");
             ActivityLogger.log("Deleted Task ID : " + taskId);
         }
         else {
 
-            System.out.println("Task Not Found!");
+            System.out.println("❌ Task Not Found!");
         }
     }
 

@@ -263,7 +263,7 @@ public class    Menu {
                     break;
 
                 case 4:
-
+                    TaskManager.getNextTask();
                     break;
                 case 5:
                     System.out.println("\n🚪🏃‍♂️ Logged Out!");
