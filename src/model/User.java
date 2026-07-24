@@ -30,15 +30,4 @@ public class User extends Person {
                 "\n Team ID: " + teamId;
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public int getRoleId() {
-        return roleId;
-    }
-
-    public int getTeamId() {
-        return teamId;
-    }
 }

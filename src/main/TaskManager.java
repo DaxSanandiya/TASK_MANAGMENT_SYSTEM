@@ -4,10 +4,9 @@ import database.DatabaseConnection;
 import datastructures.PriorityTaskQueue;
 import model.Task;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -54,10 +53,37 @@ public class TaskManager {
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Project ID: ");
-        int projectId = sc.nextInt();
+        int projectId;
+
+        while (true) {
+
+            try {
+                projectId = sc.nextInt();
+                break;
+
+            }
+            catch (Exception e) {
+                sc.nextLine();
+                System.out.print("❌ Invalid choice! Enter Numbers only !: ");
+            }
+        }
 
         System.out.print("Assigned User ID: ");
-        int userId = sc.nextInt();
+
+        int userId;
+
+        while (true) {
+
+            try {
+                userId = sc.nextInt();
+                break;
+
+            }
+            catch (Exception e) {
+                sc.nextLine();
+                System.out.print("❌ Invalid choice! Enter Numbers only !: ");
+            }
+        }
 
         sc.nextLine();
 
@@ -80,41 +106,24 @@ public class TaskManager {
                 break;
             }
 
-            System.out.print(
-                    "Enter High, Medium or Low: "
+            System.out.print("☣️ Enter only High, Medium or Low : "
             );
         }
 
-
-
-        System.out.print("Status: ");
-        String status;
-
-        while(true) {
-
-            status = sc.nextLine();
-
-            if(status.equalsIgnoreCase("Pending") ||
-                    status.equalsIgnoreCase("In Progress") ||
-                    status.equalsIgnoreCase("Completed"))
-            {
-                break;
-            }
-
-            System.out.print("👾 Enter Pending, In Progress or Completed: ");
-        }
+        String status = "Pending";
 
         System.out.print("Deadline (YYYY-MM-DD): ");
-
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String deadline ;
         while(true) {
             try {
 
                 deadline = sc.nextLine();
+                LocalDate.parse(deadline, formatter);
                 break;
             }
             catch (Exception e) {
-                sc.nextLine();
+//                sc.nextLine();
                 System.out.print("❌ Invalid Format ! Right Format is 👉 YYYY-MM-DD: ");
             }
         }
@@ -151,12 +160,43 @@ public class TaskManager {
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Task ID: ");
-        int taskId = sc.nextInt();
+        int taskId;
+
+        while (true) {
+
+            try {
+                taskId = sc.nextInt();
+                break;
+
+            }
+            catch (Exception e) {
+                sc.nextLine();
+                System.out.print("❌ Invalid choice! Enter Numbers only !: ");
+            }
+        }
 
         sc.nextLine(); //flush
 
         System.out.print("New Status: ");
-        String status = sc.nextLine();
+        String status;
+
+        while(true) {
+
+            status = sc.nextLine();
+
+            if(status.equalsIgnoreCase("Pending") ||
+                    status.equalsIgnoreCase("In Progress") ||
+                    status.equalsIgnoreCase("Completed"))
+            {
+                break;
+            }
+
+            System.out.print("👾 Enter Pending, In Progress or Completed: ");
+        }
+
+
+
+
         Connection con = DatabaseConnection.getConnection();
         String query = "UPDATE tasks SET status=? WHERE task_id=?";
         PreparedStatement ps = con.prepareStatement(query);
@@ -164,12 +204,44 @@ public class TaskManager {
         ps.setString(1, status);
         ps.setInt(2, taskId);
 
+
+        PreparedStatement ps1 = con.prepareStatement("SELECT status FROM tasks WHERE task_id=?");
+        ps1.setInt(1, taskId);
+
+        ResultSet rs = ps1.executeQuery(); // because we don't have oldStatus for undo!
+
+        String oldStatus = "";
+
+        if (rs.next()) {
+            oldStatus = rs.getString("status");
+        }
+
+
         int rows = ps.executeUpdate();
 
         if(rows > 0) {
 
             System.out.println("✅ Status Updated Successfully!");
             ActivityLogger.log("Updated Task ID : " + taskId);
+
+            System.out.print("↩️ Undo this action? (Y/N): ");
+            String choice = sc.nextLine();
+
+            if(choice.equalsIgnoreCase("Y")) {
+
+
+                CallableStatement cs = con.prepareCall("{CALL UndoTaskStatus(?, ?)}");
+
+                cs.setInt(1, taskId);
+                cs.setString(2, oldStatus);
+
+                cs.execute();
+
+                System.out.print("↩️ Undo Action Successfully!");
+                ActivityLogger.log("Undo Task Status : " + taskId);
+            }else {
+                System.out.print("✅ Action Completed !");
+            }
         }
         else {
             System.out.println("❌ Status Updated Failed!");
@@ -192,6 +264,9 @@ public class TaskManager {
         int rows = ps.executeUpdate();
 
         if(rows > 0) {
+
+            CallableStatement cs = con.prepareCall("{CALL ResetTaskAutoIncrement()}");
+            cs.execute();
 
             System.out.println("✅ Task Deleted Successfully!");
             ActivityLogger.log("Deleted Task ID : " + taskId);

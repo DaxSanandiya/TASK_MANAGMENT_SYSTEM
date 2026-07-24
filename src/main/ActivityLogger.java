@@ -8,8 +8,7 @@ import java.sql.PreparedStatement;
 
 public class ActivityLogger {
 
-    public static void log(String action)
-            throws Exception {
+    public static void log(String action) throws Exception {
 
         Connection con = DatabaseConnection.getConnection();
         String query = "INSERT INTO activity_log(user_id, action) VALUES (?, ?)";

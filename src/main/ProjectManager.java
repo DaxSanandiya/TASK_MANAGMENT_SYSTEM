@@ -4,10 +4,9 @@ import database.DatabaseConnection;
 import login.LoginManager;
 import model.Project;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -54,12 +53,29 @@ public class ProjectManager {
 
         System.out.print("Project Name: ");
         String projectName = sc.nextLine();
+
         System.out.print("Description: ");
         String description = sc.nextLine();
+
+
         System.out.print("End Date (YYYY-MM-DD): ");
-        String endDate = sc.nextLine();
-        System.out.print("Status: ");
-        String status = sc.nextLine();
+        String endDate ;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        while(true) {
+            try {
+
+                endDate = sc.nextLine();
+                LocalDate.parse(endDate, formatter);
+
+                break;
+            }
+            catch (Exception e) {
+                System.out.print("❌ Invalid Format ! Right Format is 👉 YYYY-MM-DD: ");
+            }
+        }
+
+        String status ="Pending";
 
         int createdBy = LoginManager.UserId;
 
@@ -80,12 +96,12 @@ public class ProjectManager {
 
         if(rows > 0) {
 
-            System.out.println("\nProject Created Successfully!");
+            System.out.println("\n✅ Project Created Successfully!");
             ActivityLogger.log("Created Project : " + projectName);
 
         } else {
 
-            System.out.println("\nProject Creation Failed!");
+            System.out.println("\n❌ Project Creation Failed!");
         }
     }
 
@@ -105,12 +121,15 @@ public class ProjectManager {
 
         if(rows > 0) {
 
-            System.out.println("\nProject Deleted Successfully!");
+            CallableStatement cs = con.prepareCall("{CALL ResetProjectAutoIncrement()}");
+            cs.execute();
+
+            System.out.println("\n✅ Project Deleted Successfully!");
             ActivityLogger.log("Deleted Project ID : " + projectId);
 
         } else {
 
-            System.out.println("\nProject Not Found!");
+            System.out.println("\n❌ Project Not Found!");
         }
     }
 }

@@ -1,11 +1,9 @@
 package main;
+import java.sql.*;
 import java.util.*;
 import model.User;
 import database.DatabaseConnection;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+
 import java.util.ArrayList;
 
 
@@ -94,11 +92,61 @@ public class UserManager {
             password = sc.nextLine();
         }
         System.out.print("User ID: ");
-        int userId = sc.nextInt();
+
+        int userId;
+
+        while (true) {
+
+            try {
+                userId = sc.nextInt();
+                break;
+
+            }
+            catch (Exception e) {
+                sc.nextLine();
+                System.out.print("❌ Invalid choice! Enter Numbers only !: ");
+            }
+        }
+
+
         System.out.print("Role ID (1-Admin, 2-Manager, 3-Team Member): ");
-        int roleId = sc.nextInt();
+
+        int roleId;
+
+        while (true) {
+
+            try {
+                roleId = sc.nextInt();
+                if(roleId >= 1 && roleId <= 3) {
+                    break;
+                }
+                System.out.print("🦖 Invalid choice! Enter 1-3: ");
+                break;
+
+            }
+            catch (Exception e) {
+                sc.nextLine();
+                System.out.print("❌ Invalid choice! Enter Numbers only !: ");
+            }
+        }
+
+
         System.out.print("Team ID: ");
-        int teamId = sc.nextInt();
+
+        int teamId;
+
+        while (true) {
+
+            try {
+                teamId = sc.nextInt();
+                break;
+
+            }
+            catch (Exception e) {
+                sc.nextLine();
+                System.out.print("❌ Invalid choice! Enter Numbers only !: ");
+            }
+        }
 
 
         Connection con = DatabaseConnection.getConnection();
@@ -122,6 +170,23 @@ public class UserManager {
 
             System.out.println("\n✅ User Created Successfully!");
             ActivityLogger.log("Created User : " + fullName);
+            System.out.print("↩️ Undo this action? (Y/N): ");
+
+            sc.nextLine() ;
+            String choice = sc.nextLine();
+
+            if(choice.equalsIgnoreCase("Y")) {
+
+                CallableStatement cs = con.prepareCall("{CALL UndoCreateUser(?)}");
+                cs.setInt(1, userId);
+
+                cs.execute();
+
+                System.out.print("↩️ Undo Action Successfully!");
+                ActivityLogger.log("Undo Created User : " + fullName);
+            }else {
+                System.out.print("✅ Action Completed !");
+            }
         }
         else {
 
