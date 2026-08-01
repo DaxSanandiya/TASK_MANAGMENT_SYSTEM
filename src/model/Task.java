@@ -50,10 +50,6 @@ public class Task {
         return taskId;
     }
 
-    public int getAssignedUserId() {
-        return assignedUserId;
-    }
-
     public String getTaskTitle() {
         return taskTitle;
     }
