@@ -251,7 +251,7 @@ public class    Menu {
             switch(choice) {
 
                 case 1:
-                    TaskManager.viewTasks();
+                    TaskManager.viewMyTasks();
                     break;
 
                 case 2:

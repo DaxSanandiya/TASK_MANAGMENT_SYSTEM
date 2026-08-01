@@ -36,6 +36,7 @@ public class LoginManager {
             RoleId = rs.getInt("role_id");
             UserId = rs.getInt("user_id");
 
+            System.out.println("Database Connected Successfully ✅ !");
             System.out.println("\nLogin Successful 🙌 !");
             ActivityLogger.log("Logged In ");
 

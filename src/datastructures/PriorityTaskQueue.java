@@ -39,12 +39,21 @@ public class PriorityTaskQueue {
 
     public Task getNextTask() {
 
-        if(queue.isEmpty()) {
+//        if(queue.isEmpty()) {
+//
+//            return null;
+//        }
+//
+//        return queue.peek();
 
-            return null;
+        for (Task task : queue) {
+
+            if (!task.getStatus().equalsIgnoreCase("Completed")) {
+                return task;
+            }
         }
 
-        return queue.peek();
+        return null;
     }
 
 }

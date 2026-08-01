@@ -10,6 +10,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 public class ProjectManager {
 
     public static void viewProjects() throws Exception {
@@ -24,17 +25,11 @@ public class ProjectManager {
 
             while(rs.next()) {
 
-                Project project =
-                        new Project(
-
+                Project project = new Project(
                                 rs.getInt("project_id"),
-
                                 rs.getString("project_name"),
-
                                 rs.getString("description"),
-
-                                rs.getString("status")
-                        );
+                                rs.getString("status"));
 
                 projects.add(project);
             }
@@ -66,7 +61,13 @@ public class ProjectManager {
             try {
 
                 endDate = sc.nextLine();
-                LocalDate.parse(endDate, formatter);
+                LocalDate date = LocalDate.parse(endDate, formatter);
+
+                if (date.isBefore(LocalDate.now())) {
+
+                    System.out.print("❌ Date cannot be in the past! Enter Again: ");
+                    continue;
+                }
 
                 break;
             }

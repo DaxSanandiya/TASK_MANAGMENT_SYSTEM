@@ -38,6 +38,7 @@ public class UserManager {
         }
     }
 
+
     public static void viewManagers() throws Exception {
 
         Connection con = DatabaseConnection.getConnection();
@@ -54,6 +55,7 @@ public class UserManager {
                     " | " + rs.getString("full_name"));
         }
     }
+
 
     public static void viewTeamMembers() throws Exception {
 
@@ -79,7 +81,7 @@ public class UserManager {
 
         System.out.print("Full Name: ");
         String fullName = sc.nextLine();
-        System.out.print("Email: ");
+        System.out.print("Email:` ");
         String email = sc.nextLine();
         System.out.print("Password: ");
         String password =sc.nextLine();
@@ -99,12 +101,25 @@ public class UserManager {
 
             try {
                 userId = sc.nextInt();
-                break;
+                Connection con = DatabaseConnection.getConnection();
+                PreparedStatement check = con.prepareStatement("SELECT * FROM users WHERE user_id=?");
+
+                check.setInt(1, userId);
+                ResultSet rs = check.executeQuery();
+
+                if (rs.next()) {
+
+                    System.out.println("User ID Already Exists !");
+                }
+                else
+                {
+                    break;
+                }
 
             }
             catch (Exception e) {
                 sc.nextLine();
-                System.out.print("❌ Invalid choice! Enter Numbers only !: ");
+                System.out.print("❌ Invalid Input ! Enter Numbers only !: ");
             }
         }
 
@@ -138,13 +153,24 @@ public class UserManager {
         while (true) {
 
             try {
+
                 teamId = sc.nextInt();
-                break;
+                Connection con = DatabaseConnection.getConnection();
+                PreparedStatement check = con.prepareStatement("SELECT team_id FROM users WHERE team_id=?");
+
+                check.setInt(1, teamId);
+                ResultSet rs = check.executeQuery();
+
+                if (rs.next()) {
+
+                    break;
+                }
+                System.out.println("❌ Team ID Not Found!");
 
             }
             catch (Exception e) {
                 sc.nextLine();
-                System.out.print("❌ Invalid choice! Enter Numbers only !: ");
+                System.out.print("❌ Invalid Input ! Enter Numbers only !: ");
             }
         }
 
@@ -194,25 +220,79 @@ public class UserManager {
         }
     }
 
+
     public static void updateUser() throws Exception {
 
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Enter User ID: ");
-        int userId = sc.nextInt();
+        int userId;
+
+        while (true) {
+
+            try {
+                userId = sc.nextInt();
+
+                Connection con = DatabaseConnection.getConnection();
+                PreparedStatement check = con.prepareStatement("SELECT * FROM users WHERE user_id=?");
+
+                check.setInt(1, userId);
+                ResultSet rs = check.executeQuery();
+
+                if (rs.next()) {
+
+                    break;
+                }
+                System.out.println("❌ User ID Not Found!");
+
+            }
+            catch (Exception e) {
+                sc.nextLine();
+                System.out.print("❌ Invalid Input! Enter Numbers only !: ");
+            }
+        }
+
+
+
+
         sc.nextLine();
         System.out.print("New Full Name: ");
         String fullName = sc.nextLine();
         System.out.print("New Email: ");
         String email = sc.nextLine();
         System.out.print("New Team ID: ");
-        int teamId = sc.nextInt();
+        int teamId;
 
-        Connection con = DatabaseConnection.getConnection();
+        while (true) {
+
+            try {
+
+                teamId = sc.nextInt();
+                Connection con = DatabaseConnection.getConnection();
+                PreparedStatement check = con.prepareStatement("SELECT team_id FROM users WHERE team_id=?");
+
+                check.setInt(1, teamId);
+                ResultSet rs = check.executeQuery();
+
+                if (rs.next()) {
+
+                    break;
+                }
+                System.out.println("❌ Team ID Not Found!");
+
+            }
+            catch (Exception e) {
+                sc.nextLine();
+                System.out.print("❌ Invalid Input ! Enter Numbers only !: ");
+            }
+        }
+
+
+        Connection con1 = DatabaseConnection.getConnection();
 
         String query = "UPDATE users SET full_name=?, email=?, team_id=? WHERE user_id=?";
 
-        PreparedStatement ps = con.prepareStatement(query);
+        PreparedStatement ps = con1.prepareStatement(query);
 
         ps.setString(1, fullName);
         ps.setString(2, email);
@@ -239,7 +319,31 @@ public class UserManager {
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Enter User ID: ");
-        int userId = sc.nextInt();
+        int userId;
+
+        while (true) {
+
+            try {
+                userId = sc.nextInt();
+
+                Connection con = DatabaseConnection.getConnection();
+                PreparedStatement check = con.prepareStatement("SELECT user_id FROM users WHERE user_id=?" );
+
+                check.setInt(1, userId);
+                ResultSet rs = check.executeQuery();
+
+                if (rs.next()) {
+
+                    break;
+                }
+                System.out.println("❌ User ID Not Found!");
+
+            }
+            catch (Exception e) {
+                sc.nextLine();
+                System.out.print("❌ Invalid Input! Enter Numbers only !: ");
+            }
+        }
 
         Connection con = DatabaseConnection.getConnection();
 

@@ -14,13 +14,13 @@ public class DatabaseConnection {
         Connection con = DriverManager.getConnection(URL, USER, PASSWORD);
 
 
-        if(con!=null)
-        {
-            System.out.println("Database Connected Successfully ✅ !");
-        }
-        else {
-            System.out.println("Connection Failed ❌ !");
-        }
+//        if(con!=null)
+//        {
+//            System.out.println("Database Connected Successfully ✅ !");
+//        }
+//        else {
+//            System.out.println("Connection Failed ❌ !");
+//        }
 
         return con;
     }
