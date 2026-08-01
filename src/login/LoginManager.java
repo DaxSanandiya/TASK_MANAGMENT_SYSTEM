@@ -15,7 +15,12 @@ public class LoginManager {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("\n===== 🌐 TASK MANAGMENT SYSTEM LOGIN =====");
+        System.out.println();
+        System.out.println("┌────────────────────────────────────────────────────────┐");
+        System.out.println("|          🌐 TASK MANAGMENT SYSTEM LOGIN                |");
+        System.out.println("└────────────────────────────────────────────────────────┘");
+        System.out.println();
+
         System.out.print(" ✉️ Email: ");
         String email = sc.nextLine();
         System.out.print(" 🔑 Password: ");

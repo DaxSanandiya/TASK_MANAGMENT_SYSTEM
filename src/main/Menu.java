@@ -5,10 +5,6 @@ import datastructures.TaskHistoryList;
 import java.util.Scanner;
 
 
-/// search user
-/// deadline --------team member view  & manager can update
-/// salary
-/// implement ds classes
 
 public class    Menu {
 
@@ -18,7 +14,9 @@ public class    Menu {
 
         while (true) {
 
-            System.out.println("\n======== 👑 ADMIN MENU ========");
+            System.out.println("──────────────────────────────────────────────");
+            System.out.println("               👑 ADMIN  MENU                 ");
+            System.out.println("──────────────────────────────────────────────");
 
             System.out.println("1. 👁️👁️ View Users");
             System.out.println("2. 👤 Create User");
@@ -129,7 +127,10 @@ public class    Menu {
 
         while(true) {
 
-            System.out.println("\n====== 🧑‍💼 PROJECT MANAGER MENU ======");
+
+            System.out.println("──────────────────────────────────────────────");
+            System.out.println("         👨‍💼  PROJECT MANAGER MENU             ");
+            System.out.println("──────────────────────────────────────────────");
 
             System.out.println("1. 👀 View Projects");
             System.out.println("2. 📁 Create Project");
@@ -220,7 +221,11 @@ public class    Menu {
 
         while(true) {
 
-            System.out.println("\n====== 👨‍💻 TEAM MEMBER MENU ======");
+
+            System.out.println("──────────────────────────────────────────────");
+            System.out.println("            👨‍💻  TEAM MEMBER MENU              ");
+            System.out.println("──────────────────────────────────────────────");
+
 
             System.out.println("1. 📋 View My Tasks");
             System.out.println("2. ✏️ Update Task Status");
