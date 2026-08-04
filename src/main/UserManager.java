@@ -81,11 +81,57 @@ public class UserManager {
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Full Name: ");
-        String fullName = sc.nextLine();
+
+        String fullName;
+
+        while (true) {
+
+            System.out.print("Full Name: ");
+            fullName = sc.nextLine().trim();
+
+            if (fullName.isEmpty()) {
+                System.out.println("❌ Name cannot be empty!");
+                continue;
+            }
+
+            boolean valid = true;
+
+            for (char ch : fullName.toCharArray()) {
+
+                if (!Character.isLetter(ch) && ch != ' ') {
+                    valid = false;
+                    break;
+                }
+            }
+
+            if (valid) {
+                break;
+            }
+
+            System.out.println("❌ Name should contain only letters!");
+        }
+
+
         System.out.print("Email:` ");
-        String email = sc.nextLine();
+        String email;
+
+        while (true) {
+
+            System.out.print("Email: ");
+            email = sc.nextLine();
+
+            if (email.contains("@minijira.com")) {
+                break;
+            }
+
+            System.out.println("❌ Invalid Email !");
+            System.out.println();
+            System.out.println("👉 Your Email Must Contains @minijira.com ");
+        }
+
         System.out.print("Password: ");
         String password =sc.nextLine();
+
         while(password.length() < 4) {
 
             System.out.print(
@@ -94,6 +140,8 @@ public class UserManager {
 
             password = sc.nextLine();
         }
+
+
         System.out.print("User ID: ");
 
         int userId;
@@ -213,6 +261,7 @@ public class UserManager {
                 ActivityLogger.log("Undo Created User : " + fullName);
             }else {
                 System.out.print("✅ Action Completed !");
+                System.out.println();
             }
         }
         else {
@@ -257,10 +306,54 @@ public class UserManager {
 
 
         sc.nextLine();
-        System.out.print("New Full Name: ");
-        String fullName = sc.nextLine();
-        System.out.print("New Email: ");
-        String email = sc.nextLine();
+        System.out.print("Enter Full Name: ");
+
+        String full_Name;
+
+        while (true) {
+
+            System.out.print("Full Name: ");
+            full_Name = sc.nextLine().trim();
+
+            if (full_Name.isEmpty()) {
+                System.out.println("❌ Name cannot  be empty!");
+                continue;
+            }
+
+            boolean b = true;
+
+            for (char ch : full_Name.toCharArray()) {
+
+                if (!Character.isLetter(ch) && ch != ' ') {
+                    b = false;
+                    break;
+                }
+            }
+
+            if (b) {
+                break;
+            }
+
+            System.out.println("❌ Name should contain only letters!");
+        }
+
+
+        System.out.print("Email:  ");
+        String email;
+
+        while (true) {
+
+            email = sc.nextLine();
+
+            if (email.contains("@minijira.com")) {
+                break;
+            }
+
+            System.out.println("❌ Invalid Email !");
+            System.out.println();
+            System.out.println("👉 Your Email Must Contains @minijira.com ");
+        }
+
         System.out.print("New Team ID: ");
         int teamId;
 
@@ -295,7 +388,7 @@ public class UserManager {
 
         PreparedStatement ps = con1.prepareStatement(query);
 
-        ps.setString(1, fullName);
+        ps.setString(1, full_Name);
         ps.setString(2, email);
         ps.setInt(3, teamId);
         ps.setInt(4, userId);
