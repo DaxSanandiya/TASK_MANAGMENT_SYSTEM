@@ -1,10 +1,11 @@
 package main;
-import java.sql.*;
-import java.util.*;
-import model.User;
-import database.DatabaseConnection;
 
+import database.DatabaseConnection;
+import model.User;
+
+import java.sql.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 
 public class UserManager {

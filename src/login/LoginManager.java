@@ -1,10 +1,12 @@
 package login;
 
-import java.sql.*;
-import java.util.Scanner;
-
 import database.DatabaseConnection;
 import main.ActivityLogger;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Scanner;
 
 public class LoginManager {
 

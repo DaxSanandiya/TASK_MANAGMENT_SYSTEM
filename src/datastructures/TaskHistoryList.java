@@ -1,10 +1,10 @@
 package datastructures;
 
+import database.DatabaseConnection;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
-import database.DatabaseConnection;
 
 public class TaskHistoryList {
 

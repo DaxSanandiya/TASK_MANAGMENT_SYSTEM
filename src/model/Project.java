@@ -15,7 +15,6 @@ public class Project  {
         this.description = description;
     }
 
-
     @Override
     public String toString() {
 

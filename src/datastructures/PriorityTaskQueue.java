@@ -2,8 +2,8 @@ package datastructures;
 
 import model.Task;
 
-import java.util.PriorityQueue;
 import java.util.Comparator;
+import java.util.PriorityQueue;
 
 public class PriorityTaskQueue {
 
@@ -38,13 +38,6 @@ public class PriorityTaskQueue {
     }
 
     public Task getNextTask() {
-
-//        if(queue.isEmpty()) {
-//
-//            return null;
-//        }
-//
-//        return queue.peek();
 
         for (Task task : queue) {
 

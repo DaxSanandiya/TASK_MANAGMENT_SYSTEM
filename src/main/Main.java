@@ -1,6 +1,8 @@
 package main;
-import login.LoginManager;
+
 import database.DatabaseConnection;
+import login.LoginManager;
+
 import static login.LoginManager.RoleId;
 
 
