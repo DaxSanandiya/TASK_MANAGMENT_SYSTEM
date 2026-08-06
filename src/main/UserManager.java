@@ -112,7 +112,6 @@ public class UserManager {
         }
 
 
-        System.out.print("Email:` ");
         String email;
 
         while (true) {
@@ -120,14 +119,28 @@ public class UserManager {
             System.out.print("Email: ");
             email = sc.nextLine();
 
-            if (email.contains("@minijira.com")) {
-                break;
+            if (!email.contains("@minijira.com")) {
+
+                System.out.println("❌ Invalid Email!");
+                System.out.println("👉 Email must contain @minijira.com");
+                continue;
             }
 
-            System.out.println("❌ Invalid Email !");
-            System.out.println();
-            System.out.println("👉 Your Email Must Contains @minijira.com ");
+            Connection con = DatabaseConnection.getConnection();
+
+            PreparedStatement check = con.prepareStatement("SELECT email FROM users WHERE email=?");
+            check.setString(1, email);
+            ResultSet rs = check.executeQuery();
+
+            if (rs.next()) {
+
+                System.out.println("❌ Email already exists!");
+                continue;
+            }
+
+            break;
         }
+
 
         System.out.print("Password: ");
         String password =sc.nextLine();
@@ -142,36 +155,7 @@ public class UserManager {
         }
 
 
-        System.out.print("User ID: ");
-
-        int userId;
-
-        while (true) {
-
-            try {
-                userId = sc.nextInt();
-                Connection con = DatabaseConnection.getConnection();
-                PreparedStatement check = con.prepareStatement("SELECT * FROM users WHERE user_id=?");
-
-                check.setInt(1, userId);
-                ResultSet rs = check.executeQuery();
-
-                if (rs.next()) {
-
-                    System.out.println("User ID Already Exists !");
-                }
-                else
-                {
-                    break;
-                }
-
-            }
-            catch (Exception e) {
-                sc.nextLine();
-                System.out.print("❌ Invalid Input ! Enter Numbers only !: ");
-            }
-        }
-
+        int userId = showLastUserId();//auto generated
 
         System.out.print("Role ID (1-Admin, 2-Manager, 3-Team Member): ");
 
@@ -195,8 +179,26 @@ public class UserManager {
         }
 
 
-        System.out.print("Team ID: ");
 
+        Connection con1 = DatabaseConnection.getConnection();
+        String q = "SELECT * FROM teams";
+
+        PreparedStatement ps1 = con1.prepareStatement(q);
+        ResultSet rs1 = ps1.executeQuery();
+
+        System.out.println("\n========== 👥 AVAILABLE TEAMS ==========");
+
+        while (rs1.next()) {
+
+            System.out.println(
+                    rs1.getInt("team_id") + ". " +
+                                rs1.getString("team_name")
+            );
+        }
+
+        System.out.println("========================================");
+
+        System.out.print("Team ID: ");
         int teamId;
 
         while (true) {
@@ -205,7 +207,7 @@ public class UserManager {
 
                 teamId = sc.nextInt();
                 Connection con = DatabaseConnection.getConnection();
-                PreparedStatement check = con.prepareStatement("SELECT team_id FROM users WHERE team_id=?");
+                PreparedStatement check = con.prepareStatement("SELECT team_id FROM teams WHERE team_id=?");
 
                 check.setInt(1, teamId);
                 ResultSet rs = check.executeQuery();
@@ -250,18 +252,26 @@ public class UserManager {
             sc.nextLine() ;
             String choice = sc.nextLine();
 
-            if(choice.equalsIgnoreCase("Y")) {
+            while (true) {
+                if (choice.equalsIgnoreCase("Y")) {
 
-                CallableStatement cs = con.prepareCall("{CALL UndoCreateUser(?)}");
-                cs.setInt(1, userId);
+                    CallableStatement cs = con.prepareCall("{CALL UndoCreateUser(?)}");
+                    cs.setInt(1, userId);
 
-                cs.execute();
+                    cs.execute();
 
-                System.out.print("↩️ Undo Action Successfully!");
-                ActivityLogger.log("Undo Created User : " + fullName);
-            }else {
-                System.out.print("✅ Action Completed !");
-                System.out.println();
+                    System.out.print("↩️ Undo Action Successfully!");
+                    ActivityLogger.log("Undo Created User : " + fullName);
+                    System.out.println();
+                    break;
+                } else if (choice.equalsIgnoreCase("N")) {
+                    System.out.print("✅ Action Completed !");
+                    System.out.println();
+                    break;
+                } else {
+                    System.out.println("Enter only 'Y' or 'N' !");
+                }
+
             }
         }
         else {
@@ -363,7 +373,7 @@ public class UserManager {
 
                 teamId = sc.nextInt();
                 Connection con = DatabaseConnection.getConnection();
-                PreparedStatement check = con.prepareStatement("SELECT team_id FROM users WHERE team_id=?");
+                PreparedStatement check = con.prepareStatement("SELECT team_id FROM teams WHERE team_id=?");
 
                 check.setInt(1, teamId);
                 ResultSet rs = check.executeQuery();
@@ -456,5 +466,22 @@ public class UserManager {
 
             System.out.println("\n❌ User Not Found!");
         }
+    }
+
+
+    public static int showLastUserId() throws Exception {
+
+        Connection con = DatabaseConnection.getConnection();
+
+        String query = "SELECT MAX(user_id) FROM users";
+
+        PreparedStatement ps = con.prepareStatement(query);
+        ResultSet rs = ps.executeQuery();
+
+        rs.next();
+        int uId = rs.getInt(1)+1;
+        System.out.println("📌 Generated User ID : " + uId);
+
+        return uId;
     }
 }

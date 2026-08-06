@@ -11,6 +11,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         DatabaseConnection.getConnection();
 
+
         while (true) {
             if (!(LoginManager.login() == -1)) {
 
@@ -31,9 +32,9 @@ public class Main {
 
                         default:
                             System.out.println("🦖 Login Failed");
+                            return;
                     }
 
-                return;
             }
         }
     }
