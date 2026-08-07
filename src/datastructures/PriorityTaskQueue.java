@@ -25,6 +25,13 @@ public class PriorityTaskQueue {
     }
 
     public void addTask(Task task) {
+
+        System.out.println(
+                task.getTaskTitle() + " | " +
+                        task.getPriority() + " | " +
+                        task.getStatus()
+        );
+
         queue.add(task);
     }
 
@@ -39,9 +46,16 @@ public class PriorityTaskQueue {
 
     public Task getNextTask() {
 
-        for (Task task : queue) {
+        while (!queue.isEmpty()) {
 
-            if (!task.getStatus().equalsIgnoreCase("Completed")) {
+            Task task = queue.peek();
+
+            if (task.getStatus().equalsIgnoreCase("Completed")) {
+
+                queue.poll();   // Remove completed task
+
+            } else {
+
                 return task;
             }
         }
@@ -49,4 +63,9 @@ public class PriorityTaskQueue {
         return null;
     }
 
+    public void clear() {
+
+        queue.clear();
+
+    }
 }

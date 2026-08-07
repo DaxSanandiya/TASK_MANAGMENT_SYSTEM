@@ -375,6 +375,7 @@ public class TaskManager {
 
         public static void loadTasksIntoQueue() throws Exception {
 
+            priorityQueue.clear();
             Connection con = DatabaseConnection.getConnection();
             String query = "SELECT * FROM tasks where assigned_user_id =?";
             PreparedStatement ps = con.prepareStatement(query);
@@ -454,4 +455,5 @@ public class TaskManager {
             System.out.println("\n❌ No Tasks Assigned!");
         }
     }
+
 }
